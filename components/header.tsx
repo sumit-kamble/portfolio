@@ -13,13 +13,13 @@ export default function Header() {
         <div>
           <Link
             href='/'
-            className='text-2xl font-semibold tracking-tight transition-opacity hover:opacity-80'
+            className='text-3xl font-semibold tracking-tight transition-opacity hover:opacity-60'
           >
             Sumit Kamble
           </Link>
         </div>
 
-        <ul className='hidden items-center gap-6 text-sm font-medium text-muted-foreground md:flex'>
+        <ul className='hidden max-w-lg items-center gap-6 text-lg font-medium text-muted-foreground md:flex'>
           {['Posts', 'Projects', 'Contact'].map(item => (
             <li key={item}>
               <Link
@@ -46,7 +46,7 @@ export default function Header() {
 
       {isOpen && (
         <div className='absolute inset-x-0 top-16 bg-background/90 shadow-md backdrop-blur-lg md:hidden'>
-          <ul className='flex flex-col items-center gap-4 py-4 text-sm font-medium text-muted-foreground'>
+          <ul className='flex flex-col items-center gap-4 py-4 text-lg font-medium text-muted-foreground'>
             {['Posts', 'Projects', 'Contact'].map(item => (
               <li key={item}>
                 <Link
