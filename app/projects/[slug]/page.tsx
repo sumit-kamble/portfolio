@@ -1,4 +1,4 @@
-import getPostBySlug, { getPosts } from '@/lib/posts'
+import { getProjectBySlug, getProjects } from '@/lib/projects'
 import { formatDate } from '@/lib/utils'
 import { ArrowLeftIcon } from 'lucide-react'
 import { MDXRemote } from 'next-mdx-remote/rsc'
@@ -6,19 +6,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-const calculateReadTime = (content: string) => {
-  const words = content.split(/\s+/).length
-  return Math.ceil(words / 200)
-}
-
 export async function generateStaticParams() {
-  const posts = await getPosts()
-  const slugs = posts.map(post => ({ slug: post.slug }))
+  const projects = await getProjects()
+  const slugs = projects.map(project => ({ slug: project.slug }))
 
   return slugs
 }
 
-export default async function Post({
+export default async function Project({
   params
 }: {
   params: Promise<{ slug: string }>
@@ -27,41 +22,23 @@ export default async function Post({
 
   if (!slug) return notFound()
 
-  const post = await getPostBySlug(slug)
-  if (!post) {
+  const project = await getProjectBySlug(slug)
+  if (!project) {
     notFound()
   }
 
-  const { metadata, content } = post
-  const { title, image, author, publishedAt, tags } = metadata
-
-  const readTime = calculateReadTime(content)
-
-  const encodedTitle = encodeURIComponent(title ?? '')
-  const shareUrl = encodeURIComponent(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/posts/${slug}`
-  )
-
-  const socialLinks = [
-    {
-      name: 'LinkedIn',
-      url: `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`
-    },
-    {
-      name: 'Facebook',
-      url: `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`
-    }
-  ]
+  const { metadata, content } = project
+  const { title, image, author, publishedAt } = metadata
 
   return (
     <section className='pb-24 pt-32'>
       <div className='container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8'>
         <Link
-          href='/posts'
+          href='/projects'
           className='mb-8 inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200'
         >
           <ArrowLeftIcon className='h-5 w-5' />
-          <span>Back to posts</span>
+          <span>Back to projects</span>
         </Link>
 
         {image && (
@@ -79,30 +56,9 @@ export default async function Post({
         <header className='text-center'>
           <h1 className='text-4xl font-bold tracking-tight'>{title}</h1>
           <p className='mt-3 text-sm text-gray-500 dark:text-gray-400'>
-            {author} • {formatDate(publishedAt ?? '')} • {readTime} min read
+            {author} • {formatDate(publishedAt ?? '')}
           </p>
         </header>
-
-        {Array.isArray(tags)
-          ? tags.length > 0 && (
-              <div className='mt-4 flex flex-wrap justify-center gap-2'>
-                {tags.map(tag => (
-                  <span
-                    key={tag}
-                    className='rounded-full bg-gray-100 px-3 py-1 text-xs font-medium dark:bg-gray-800'
-                  >
-                    #{tag}
-                  </span>
-                ))}
-              </div>
-            )
-          : tags && (
-              <div className='mt-4 flex flex-wrap justify-center gap-2'>
-                <span className='rounded-full bg-gray-100 px-3 py-1 text-xs font-medium dark:bg-gray-800'>
-                  #{tags}
-                </span>
-              </div>
-            )}
 
         <article className='prose prose-lg dark:prose-invert mx-auto mt-8 leading-relaxed text-gray-800 dark:text-gray-300'>
           {await MDXRemote({
@@ -157,20 +113,6 @@ export default async function Post({
             }
           })}
         </article>
-
-        <div className='mt-12 flex justify-center gap-4'>
-          {socialLinks.map(({ name, url }) => (
-            <a
-              key={name}
-              href={url}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-sm font-medium text-blue-600 hover:underline dark:text-blue-400'
-            >
-              Share on {name}
-            </a>
-          ))}
-        </div>
       </div>
     </section>
   )
