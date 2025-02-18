@@ -37,7 +37,7 @@ export default function Footer() {
     <footer className='w-full border-t bg-background py-6'>
       <div className='container mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 md:flex-row'>
         <p className='text-sm text-muted-foreground'>
-          © {new Date().getFullYear()} Sumit Kamble. All rights reserved.
+          © {new Date().getFullYear()} Sumit Kamble.
         </p>
         <ul className='flex gap-4'>
           {navigation.map(item => (

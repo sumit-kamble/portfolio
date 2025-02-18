@@ -1,4 +1,4 @@
-import getPostBySlug from '@/lib/posts'
+import getPostBySlug, { getPosts } from '@/lib/posts'
 import { formatDate } from '@/lib/utils'
 import { ArrowLeftIcon } from 'lucide-react'
 import { MDXRemote } from 'next-mdx-remote/rsc'
@@ -9,6 +9,13 @@ import { notFound } from 'next/navigation'
 const calculateReadTime = (content: string) => {
   const words = content.split(/\s+/).length
   return Math.ceil(words / 200)
+}
+
+export async function generateStaticParams() {
+  const posts = await getPosts()
+  const slugs = posts.map(post => ({ slug: post.slug }))
+
+  return slugs
 }
 
 export default async function Post({
