@@ -9,10 +9,10 @@ export default async function PostPage() {
     <section className='pb-24 pt-24'>
       <div className='container mx-auto max-w-4xl px-6 sm:px-8'>
         <header className='mb-12 text-center'>
-          <h1 className='text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100'>
+          <h2 className='text-center text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100'>
             Blog Posts
-          </h1>
-          <p className='mt-2 text-lg text-gray-600 dark:text-gray-400'>
+          </h2>
+          <p className='mt-2 text-center text-gray-600 dark:text-gray-400'>
             Insights, tutorials, and thoughts
           </p>
         </header>

@@ -1,5 +1,6 @@
 import Hero from '@/components/hero'
 import RecentPosts from '@/components/recent-posts'
+import RecentProjects from '@/components/recent-projects'
 
 export default async function Home() {
   return (
@@ -7,6 +8,7 @@ export default async function Home() {
       <div className='flex flex-col items-center'>
         <Hero />
         <RecentPosts />
+        <RecentProjects />
       </div>
     </section>
   )

@@ -10,12 +10,12 @@ export default function Projects({
 }) {
   return (
     <section className='container mx-auto max-w-5xl px-6'>
-      <div className='mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+      <div className='mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-2'>
         {projects.map(project => (
           <Link
             key={project.slug}
             href={`/projects/${project.slug}`}
-            className='group overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md transition-all hover:shadow-lg dark:border-gray-700 dark:bg-gray-900'
+            className='group overflow-hidden rounded-lg border border-gray-200 bg-background shadow-lg transition-all hover:scale-105 hover:shadow-xl'
           >
             {project.image && (
               <div className='relative h-48 w-full'>
