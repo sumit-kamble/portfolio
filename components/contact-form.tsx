@@ -46,7 +46,7 @@ export default function ContactForm() {
           Get in Touch
         </h2>
         <p className='mt-3 text-center text-gray-600 dark:text-gray-400'>
-          Have a project in mind? Let's connect and discuss how I can help.
+          Let's connect and discuss how I can help.
         </p>
 
         <form

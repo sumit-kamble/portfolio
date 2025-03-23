@@ -8,7 +8,7 @@ export default function Hero() {
             Hi, 👋 <br /> I'm Sumit Kamble
           </h1>
           <p className='max-w-lg text-lg text-muted-foreground'>
-            A passionate software engineer crafting scalable and efficient web
+            A software engineer crafting scalable and efficient web
             applications.
           </p>
 
