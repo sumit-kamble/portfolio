@@ -6,7 +6,7 @@ export default function Hero() {
       <div className='container mx-auto flex max-w-5xl flex-col items-center gap-12 md:flex-row'>
         <div className='flex flex-1 flex-col items-center space-y-6 text-center md:items-start md:text-left'>
           <h1 className='text-3xl font-bold leading-tight tracking-tight sm:text-4xl'>
-            Hi, 👋 <br /> I'm Sumit Kamble
+            Hi, 👋 <br /> I&apos;m Sumit Kamble
           </h1>
           <p className='max-w-lg text-lg text-muted-foreground'>
             A software engineer crafting scalable and efficient web
