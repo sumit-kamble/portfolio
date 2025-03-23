@@ -2,7 +2,7 @@ import { getPosts } from '@/lib/posts'
 import { formatDate } from '@/lib/utils'
 import Link from 'next/link'
 import { JSX } from 'react'
-import Posts from './posts'
+// import Posts from './posts'
 
 export default async function RecentPosts(): Promise<JSX.Element> {
   const posts = await getPosts(3)

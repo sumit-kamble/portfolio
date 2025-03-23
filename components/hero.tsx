@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 export default function Hero() {
   return (
     <main className='mt-16 flex max-h-screen items-center justify-center bg-background px-6'>
@@ -13,18 +14,18 @@ export default function Hero() {
           </p>
 
           <div className='flex flex-wrap justify-center gap-4 md:justify-start'>
-            <a
+            <Link
               href='/projects'
               className='rounded-lg bg-primary px-6 py-2 text-white transition hover:bg-primary/80 dark:text-black'
             >
               View Projects
-            </a>
-            <a
+            </Link>
+            <Link
               href='/contact'
               className='rounded-lg border border-muted px-6 py-2 transition hover:bg-muted/20'
             >
               Contact Me
-            </a>
+            </Link>
           </div>
         </div>
 

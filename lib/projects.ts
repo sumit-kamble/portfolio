@@ -10,7 +10,7 @@ export type Project = {
 }
 
 export type ProjectMetadata = {
-  title?: string
+  title: string
   summary?: string
   image?: string
   author?: string
@@ -28,7 +28,7 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
 
     const { data, content } = matter(fileContents)
 
-    return { metadata: { ...data, slug }, content }
+    return { metadata: { ...data, slug, title: data.title }, content }
   } catch (error) {
     console.error(`Error reading project ${slug}:`, error)
     return null

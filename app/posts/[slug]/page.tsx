@@ -37,7 +37,7 @@ export default async function Post({
 
   const readTime = calculateReadTime(content)
 
-  const encodedTitle = encodeURIComponent(title ?? '')
+  //const encodedTitle = encodeURIComponent(title ?? '')
   const shareUrl = encodeURIComponent(
     `${process.env.NEXT_PUBLIC_SITE_URL}/posts/${slug}`
   )
@@ -149,7 +149,7 @@ export default async function Post({
                 />
               ),
               a: props => (
-                <a
+                <Link
                   className='text-blue-600 hover:underline dark:text-blue-400'
                   {...props}
                 />
@@ -160,7 +160,7 @@ export default async function Post({
 
         <div className='mt-12 flex justify-center gap-4'>
           {socialLinks.map(({ name, url }) => (
-            <a
+            <Link
               key={name}
               href={url}
               target='_blank'
@@ -168,7 +168,7 @@ export default async function Post({
               className='text-sm font-medium text-blue-600 hover:underline dark:text-blue-400'
             >
               Share on {name}
-            </a>
+            </Link>
           ))}
         </div>
       </div>

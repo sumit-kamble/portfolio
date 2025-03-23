@@ -2,6 +2,7 @@ import { formatDate } from '@/lib/utils'
 import Link from 'next/link'
 import { JSX } from 'react'
 import { getProjects } from '@/lib/projects'
+import Image from 'next/image'
 
 export default async function RecentProjects(): Promise<JSX.Element> {
   const projects = await getProjects(3)
@@ -24,9 +25,11 @@ export default async function RecentProjects(): Promise<JSX.Element> {
             >
               {/* Project Image */}
               {project.image && (
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
+                  width={500}
+                  height={300}
                   className='h-34 w-full object-cover transition-transform duration-300 group-hover:scale-110'
                 />
               )}

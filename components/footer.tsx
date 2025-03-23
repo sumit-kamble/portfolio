@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { SVGProps } from 'react'
 const navigation = [
   {
@@ -42,14 +43,14 @@ export default function Footer() {
         <ul className='flex gap-4'>
           {navigation.map(item => (
             <li key={item.name}>
-              <a
+              <Link
                 href={item.href}
                 target='_blank'
                 rel='noopener noreferrer'
                 className='text-muted-foreground transition-colors hover:text-foreground'
               >
                 <item.icon className='h-5 w-5' />
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

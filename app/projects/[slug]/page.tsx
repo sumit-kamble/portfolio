@@ -105,7 +105,7 @@ export default async function Project({
                 />
               ),
               a: props => (
-                <a
+                <Link
                   className='text-blue-600 hover:underline dark:text-blue-400'
                   {...props}
                 />
