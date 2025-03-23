@@ -27,7 +27,7 @@ export async function sendEmail(data: ContactFormInputs) {
       to: [submissionMail],
       subject: 'Contact form submission',
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-      react: ContactFormEmail({ name, email, message })
+      react: Promise.resolve(ContactFormEmail({ name, email, message }))
     })
 
     if (error) {
